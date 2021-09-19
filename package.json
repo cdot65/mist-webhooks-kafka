@@ -1,0 +1,22 @@
+{
+  "name": "mist_webhooks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "consumer.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "nodemon app/index.js",
+    "consumer": "nodemon app/consumer.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "kafkajs": "^1.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
