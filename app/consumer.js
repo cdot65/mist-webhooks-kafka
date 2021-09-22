@@ -34,3 +34,4 @@ main().catch(async error => {
   process.exit(1)
 })
 
+module.exports = main

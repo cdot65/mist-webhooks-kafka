@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nodemon app/index.js",
-    "consumer": "nodemon app/consumer.js"
+    "consumer": "nodemon app/app.js"
   },
   "author": "",
   "license": "ISC",

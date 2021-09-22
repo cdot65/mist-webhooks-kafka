@@ -1,13 +1,10 @@
 module.exports = app => {
-  const actions = require("../controllers/kafkaController")
+  const produce = require("../controllers/kafkaController")
 
   var router = require("express").Router();
 
   // Create a new Config
-  router.post("/", actions.create);
-
-  // Retrieve all Configs
-  // router.get("/", actions.findAll);
+  router.post("/", (req, res), produce);
 
   // API route
   app.use('/webhooks', router);
