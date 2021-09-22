@@ -14,29 +14,29 @@ const producer = kafka.producer()
 
 // we define an async function that writes a new message each second
 const produce = async (req) => {
-	await producer.connect()
+  await producer.connect()
 
-	// after the produce has connected, we start an interval timer
-	setInterval(async () => {
-		try {
-			// send a message to the configured topic with
-			// the key and value formed from the current value of `req.body`
-			await producer.send({
-				topic,
-				messages: [
-					{
-						key: JSON.stringify(req.body.topic),
-						value: JSON.stringify(req.body.events),
-					},
-				],
-			})
+  // after the produce has connected, we start an interval timer
+  setInterval(async () => {
+    try {
+      // send a message to the configured topic with
+      // the key and value formed from the current value of `req.body`
+      await producer.send({
+        topic,
+        messages: [
+          {
+            key: req.body.topic.toString(),
+            value: JSON.stringify(req.body.events),
+          },
+        ],
+      })
 
-			// if the message is written successfully, log it and increment `i`
-			console.log("writes: ", req.body.topic)
-		} catch (err) {
-			console.error("could not write message " + err)
-		}
-	}, 10000)
+      // if the message is written successfully, log it and increment `i`
+      console.log("writes: ", req.body.topic)
+    } catch (err) {
+      console.error("could not write message " + err)
+    }
+  }, 10000)
 }
 
 module.exports = produce
