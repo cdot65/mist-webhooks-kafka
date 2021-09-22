@@ -1,7 +1,6 @@
 /*
- - setup express application
+ - EXPRESS SETUP
 */
-
 // import express library
 const express = require("express");
 
@@ -12,10 +11,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-/*
- - KafkaJS setup
-*/
 
+/*
+ - KAFKA SETUP
+*/
 // import Kafka services
 const produce = require("./kafkaProducer")
 
@@ -23,7 +22,6 @@ const produce = require("./kafkaProducer")
 /*
  - API routes
 */
-
 // hello world route
 app.get("/", (req, res) => {
   res.json({message: "Welcome"});
@@ -36,8 +34,10 @@ app.post('/webhooks', (req, res) => {
   res.sendStatus(200);
 })
 
-// require("./routes/webhook.routes")(app);
 
+/*
+ - RUN EXPRESS
+*/
 // constants
 const PORT = process.env.PORT || 8080;
 const HOST = '0.0.0.0';
