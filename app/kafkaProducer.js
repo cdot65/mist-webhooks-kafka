@@ -17,7 +17,7 @@ const produce = async (req) => {
   await producer.connect()
 
   // after the produce has connected, we start an interval timer
-  setInterval(async () => {
+  async function produceMessage(req) {
     try {
       // send a message to the configured topic with
       // the key and value formed from the current value of `req.body`
@@ -36,7 +36,9 @@ const produce = async (req) => {
     } catch (err) {
       console.error("could not write message " + err)
     }
-  }, 10000)
+  }
+
+	produceMessage(req);
 }
 
 module.exports = produce
